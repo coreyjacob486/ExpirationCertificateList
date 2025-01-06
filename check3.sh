@@ -24,9 +24,9 @@ while IFS= read -r domain; do
     if [ $? -eq 0 ] && [ -n "$expiration_date" ]; then
         # Format the output by stripping "notAfter=" from the expiration date
         expiration_date_formatted=${expiration_date#*=}
-        echo "$domain: $expiration_date_formatted" >> "$output_file"
+        echo "$domain; $expiration_date_formatted" >> "$output_file"
     else
-        echo "$domain: Unable to retrieve expiration date (timeout or error)" >> "$output_file"
+        echo "$domain; Unable to retrieve expiration date (timeout or error)" >> "$output_file"
     fi
 done < domains.txt
 
